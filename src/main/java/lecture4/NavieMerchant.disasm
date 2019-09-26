@@ -1,0 +1,69 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture4/NaiveMerchant.class
+  Last modified 2019-9-26; size 474 bytes
+  MD5 checksum 6710449702e91a70a657f88e05c6a581
+  Compiled from "NaiveMerchant.java"
+public class lecture4.NaiveMerchant extends lecture4.Merchant
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #5.#15         // lecture4/Merchant."<init>":()V
+   #2 = Methodref          #16.#17        // java/lang/Double.valueOf:(D)Ljava/lang/Double;
+   #3 = Methodref          #4.#18         // lecture4/NaiveMerchant.actionPrice:(DLlecture4/Customer;)Ljava/lang/Double;
+   #4 = Class              #19            // lecture4/NaiveMerchant
+   #5 = Class              #20            // lecture4/Merchant
+   #6 = Utf8               <init>
+   #7 = Utf8               ()V
+   #8 = Utf8               Code
+   #9 = Utf8               LineNumberTable
+  #10 = Utf8               actionPrice
+  #11 = Utf8               (DLlecture4/Customer;)Ljava/lang/Double;
+  #12 = Utf8               (DLlecture4/Customer;)Ljava/lang/Number;
+  #13 = Utf8               SourceFile
+  #14 = Utf8               NaiveMerchant.java
+  #15 = NameAndType        #6:#7          // "<init>":()V
+  #16 = Class              #21            // java/lang/Double
+  #17 = NameAndType        #22:#23        // valueOf:(D)Ljava/lang/Double;
+  #18 = NameAndType        #10:#11        // actionPrice:(DLlecture4/Customer;)Ljava/lang/Double;
+  #19 = Utf8               lecture4/NaiveMerchant
+  #20 = Utf8               lecture4/Merchant
+  #21 = Utf8               java/lang/Double
+  #22 = Utf8               valueOf
+  #23 = Utf8               (D)Ljava/lang/Double;
+{
+  public lecture4.NaiveMerchant();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method lecture4/Merchant."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  public java.lang.Double actionPrice(double, lecture4.Customer);
+    descriptor: (DLlecture4/Customer;)Ljava/lang/Double;
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=3
+         0: dconst_1
+         1: invokestatic  #2                  // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+         4: areturn
+      LineNumberTable:
+        line 10: 0
+
+  public java.lang.Number actionPrice(double, lecture4.Customer);
+    descriptor: (DLlecture4/Customer;)Ljava/lang/Number;
+    flags: ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_0
+         1: dload_1
+         2: aload_3
+         3: invokevirtual #3                  // Method actionPrice:(DLlecture4/Customer;)Ljava/lang/Double;
+         6: areturn
+      LineNumberTable:
+        line 7: 0
+}
+SourceFile: "NaiveMerchant.java"

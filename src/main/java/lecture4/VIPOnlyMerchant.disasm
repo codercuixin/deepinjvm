@@ -1,0 +1,68 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture4/VIPOnlyMerchant.class
+  Last modified 2019-9-26; size 461 bytes
+  MD5 checksum 9a8f86c43c4e37f9233eaa616c3dce74
+  Compiled from "VIPOnlyMerchant.java"
+public class lecture4.VIPOnlyMerchant extends lecture4.NormalMerchant<lecture4.VIP>
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #5.#17         // lecture4/NormalMerchant."<init>":()V
+   #2 = Class              #18            // lecture4/VIP
+   #3 = Methodref          #4.#19         // lecture4/VIPOnlyMerchant.actionPrice:(DLlecture4/VIP;)D
+   #4 = Class              #20            // lecture4/VIPOnlyMerchant
+   #5 = Class              #21            // lecture4/NormalMerchant
+   #6 = Utf8               <init>
+   #7 = Utf8               ()V
+   #8 = Utf8               Code
+   #9 = Utf8               LineNumberTable
+  #10 = Utf8               actionPrice
+  #11 = Utf8               (DLlecture4/VIP;)D
+  #12 = Utf8               (DLlecture4/Customer;)D
+  #13 = Utf8               Signature
+  #14 = Utf8               Llecture4/NormalMerchant<Llecture4/VIP;>;
+  #15 = Utf8               SourceFile
+  #16 = Utf8               VIPOnlyMerchant.java
+  #17 = NameAndType        #6:#7          // "<init>":()V
+  #18 = Utf8               lecture4/VIP
+  #19 = NameAndType        #10:#11        // actionPrice:(DLlecture4/VIP;)D
+  #20 = Utf8               lecture4/VIPOnlyMerchant
+  #21 = Utf8               lecture4/NormalMerchant
+{
+  public lecture4.VIPOnlyMerchant();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method lecture4/NormalMerchant."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  public double actionPrice(double, lecture4.VIP);
+    descriptor: (DLlecture4/VIP;)D
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=3
+         0: dconst_0
+         1: dreturn
+      LineNumberTable:
+        line 10: 0
+
+  public double actionPrice(double, lecture4.Customer);
+    descriptor: (DLlecture4/Customer;)D
+    flags: ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_0
+         1: dload_1
+         2: aload_3
+         3: checkcast     #2                  // class lecture4/VIP
+         6: invokevirtual #3                  // Method actionPrice:(DLlecture4/VIP;)D
+         9: dreturn
+      LineNumberTable:
+        line 7: 0
+}
+Signature: #14                          // Llecture4/NormalMerchant<Llecture4/VIP;>;
+SourceFile: "VIPOnlyMerchant.java"
