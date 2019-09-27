@@ -4,6 +4,7 @@ package lecture5;
  * * @Author: cuixin
  * * @Date: 2019/9/26 15:35
  * java -XX:CompileCommand='dontinline,*.passThroughImmigration' lecture5/Passenger
+ * 由于这里前一半是中国旅客，后一半是外国游客，因而JVM的单态内联可以使用内联缓存，性能也比不内联提高了许多。
  */
 public abstract class Passenger {
     /**
