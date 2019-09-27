@@ -1,0 +1,142 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture6/Foo.class
+  Last modified 2019-9-26; size 635 bytes
+  MD5 checksum bd04f97ae5abb22e20940c8ec268f9a0
+  Compiled from "Foo.java"
+public class lecture6.Foo
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #8.#24         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #7.#25         // lecture6/Foo.tryBlock:I
+   #3 = Fieldref           #7.#26         // lecture6/Foo.finallyBlock:I
+   #4 = Class              #27            // java/lang/Exception
+   #5 = Fieldref           #7.#28         // lecture6/Foo.catchBlock:I
+   #6 = Fieldref           #7.#29         // lecture6/Foo.methodBlock:I
+   #7 = Class              #30            // lecture6/Foo
+   #8 = Class              #31            // java/lang/Object
+   #9 = Utf8               tryBlock
+  #10 = Utf8               I
+  #11 = Utf8               catchBlock
+  #12 = Utf8               finallyBlock
+  #13 = Utf8               methodBlock
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = Utf8               Code
+  #17 = Utf8               LineNumberTable
+  #18 = Utf8               test
+  #19 = Utf8               StackMapTable
+  #20 = Class              #27            // java/lang/Exception
+  #21 = Class              #32            // java/lang/Throwable
+  #22 = Utf8               SourceFile
+  #23 = Utf8               Foo.java
+  #24 = NameAndType        #14:#15        // "<init>":()V
+  #25 = NameAndType        #9:#10         // tryBlock:I
+  #26 = NameAndType        #12:#10        // finallyBlock:I
+  #27 = Utf8               java/lang/Exception
+  #28 = NameAndType        #11:#10        // catchBlock:I
+  #29 = NameAndType        #13:#10        // methodBlock:I
+  #30 = Utf8               lecture6/Foo
+  #31 = Utf8               java/lang/Object
+  #32 = Utf8               java/lang/Throwable
+{
+  public lecture6.Foo();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  public void test();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=1
+         0: iconst_0
+         1: istore_1
+         2: iload_1
+         3: bipush        100
+         5: if_icmpge     75
+         8: aload_0
+         9: iconst_0
+        10: putfield      #2                  // Field tryBlock:I
+        13: iload_1
+        14: bipush        50
+        16: if_icmpge     27
+        19: aload_0
+        20: iconst_2
+        21: putfield      #3                  // Field finallyBlock:I
+        24: goto          69
+        27: iload_1
+        28: bipush        80
+        30: if_icmpge     41
+        33: aload_0
+        34: iconst_2
+        35: putfield      #3                  // Field finallyBlock:I
+        38: goto          75
+        41: aload_0
+        42: iconst_2
+        43: putfield      #3                  // Field finallyBlock:I
+        46: return
+        47: astore_2
+        48: aload_0
+        49: iconst_1
+        50: putfield      #5                  // Field catchBlock:I
+        53: aload_0
+        54: iconst_2
+        55: putfield      #3                  // Field finallyBlock:I
+        58: goto          69
+        61: astore_3
+        62: aload_0
+        63: iconst_2
+        64: putfield      #3                  // Field finallyBlock:I
+        67: aload_3
+        68: athrow
+        69: iinc          1, 1
+        72: goto          2
+        75: aload_0
+        76: iconst_3
+        77: putfield      #6                  // Field methodBlock:I
+        80: return
+      Exception table:
+         from    to  target type
+             8    19    47   Class java/lang/Exception
+            27    33    47   Class java/lang/Exception
+             8    19    61   any
+            27    33    61   any
+            47    53    61   any
+      LineNumberTable:
+        line 13: 0
+        line 15: 8
+        line 16: 13
+        line 26: 19
+        line 18: 27
+        line 26: 33
+        line 21: 46
+        line 23: 47
+        line 24: 48
+        line 26: 53
+        line 27: 58
+        line 26: 61
+        line 13: 69
+        line 29: 75
+        line 30: 80
+      StackMapTable: number_of_entries = 7
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 24 /* same */
+        frame_type = 13 /* same */
+        frame_type = 69 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 77 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 7 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+}
+SourceFile: "Foo.java"
