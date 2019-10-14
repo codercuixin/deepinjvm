@@ -20,6 +20,7 @@
         </plugins>
     </build>
     <dependencies>
+        <!--添加这个依赖只是为了IDEA中打开不报错 -->
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
