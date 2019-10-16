@@ -1,0 +1,7 @@
+# total entries: 0
+# biased lock entries: 0
+# anonymously biased lock entries: 0
+# rebiased lock entries: 0
+# revoked lock entries: 0
+# fast path lock entries: 1895970
+# slow path lock entries: 2

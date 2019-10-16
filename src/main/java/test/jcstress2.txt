@@ -1,0 +1,724 @@
+Java Concurrency Stress Tests
+---------------------------------------------------------------------------------
+Rev: null, built by Administrator with 1.8.0_91 at null
+
+Probing what VM modes are available:
+ (failures are non-fatal, but may miss some interesting cases)
+
+----- [OK] [-Xint]
+----- [OK] [-XX:TieredStopAtLevel=1]
+----- [OK] [-client]
+----- [OK] [-client, -XX:-TieredCompilation]
+----- [OK] [-server]
+----- [N/A] [-server, -XX:+UnlockDiagnosticVMOptions, -XX:+StressLCM, -XX:+StressGCM]
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+Error: VM option 'StressLCM' is develop and is available only in debug version of VM.
+
+
+----- [OK] [-server, -XX:-TieredCompilation]
+----- [N/A] [-server, -XX:-TieredCompilation, -XX:+UnlockDiagnosticVMOptions, -XX:+StressLCM, -XX:+StressGCM]
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+Error: VM option 'StressLCM' is develop and is available only in debug version of VM.
+
+
+
+Initializing and probing the target VM: 
+ (all failures are non-fatal, but may affect testing accuracy)
+
+----- [OK] Adding ourselves to bootclasspath: D:\IdeaProject\deepinjvm\src\main\java\test\target\jcstress.jar
+----- [OK] Unlocking diagnostic VM options
+----- [OK] Trimming down the number of compiler threads
+----- [OK] Trimming down the number of parallel GC threads
+----- [OK] Trimming down the number of concurrent GC threads
+----- [OK] Trimming down the number of G1 concurrent refinement GC threads
+----- [OK] Testing @Contended works on all results and infra objects
+----- [OK] Unlocking Whitebox API for online de-optimization
+----- [OK] Testing allocation profiling
+----- [FAILED] Trying Thread.onSpinWait
+Exception in thread "main" java.lang.NoSuchMethodError: java.lang.Thread.onSpinWait()V
+	at org.openjdk.jcstress.vm.ThreadSpinWaitTestMain.main(ThreadSpinWaitTestMain.java:30)
+
+
+Burning up to figure out the exact CPU count....... done!
+
+  Hardware threads in use/available: 4/4, no yielding.
+  Test preset mode: "default"
+  Writing the test results to "jcstress.1571042860377"
+  Parsing results to "results/"
+  Running each test matching ".*" for 1 forks, 5 iterations, 1000 ms each
+  Each JVM would execute at most 5 tests in the row.
+  Solo stride size will be autobalanced within [10, 10000] elements, but taking no more than 100 Mb.
+
+   [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     9,231,307     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     4,150,203     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:00) (Rate: 9.90E+08 samples/sec) (Tests: 1 of 2) (Forks:  1 of 12) (Iterations:  1 of 60; 0 passed, 1 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:00) (Rate: 6.57E+08 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  2 of 60; 1 passed, 1 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     4,014,271     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,007,399     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:19) (Rate: 1.94E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  3 of 60; 1 passed, 2 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:14) (Rate: 1.99E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  4 of 60; 2 passed, 2 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     7,963,558     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,766,372     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:22) (Rate: 1.56E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  5 of 60; 2 passed, 3 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:18) (Rate: 1.60E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  6 of 60; 3 passed, 3 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     4,439,439     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,876,341     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:22) (Rate: 1.33E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  7 of 60; 3 passed, 4 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:19) (Rate: 1.34E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  8 of 60; 4 passed, 4 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    16,449,376     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,340,934     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:22) (Rate: 1.49E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations:  9 of 60; 4 passed, 5 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:20) (Rate: 1.49E+07 samples/sec) (Tests: 2 of 2) (Forks:  2 of 12) (Iterations: 10 of 60; 5 passed, 5 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     5,888,308               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,773,592               ACCEPTABLE  Normal outcome                                              
+            1, 0     7,191,016               ACCEPTABLE  Normal outcome                                              
+            1, 2         6,944   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:22) (Rate: 1.51E+07 samples/sec) (Tests: 2 of 2) (Forks:  3 of 12) (Iterations: 11 of 60; 6 passed, 5 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,062,923     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       150,267     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:20) (Rate: 1.48E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 12 of 60; 6 passed, 6 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,076,762               ACCEPTABLE  Normal outcome                                              
+            0, 2     4,374,776               ACCEPTABLE  Normal outcome                                              
+            1, 0     6,708,184               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,708   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:21) (Rate: 1.52E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 13 of 60; 7 passed, 6 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,176,666     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       139,074     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:20) (Rate: 1.51E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 14 of 60; 7 passed, 7 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     5,709,973               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,715,877               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,231,665               ACCEPTABLE  Normal outcome                                              
+            1, 2        15,795   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:20) (Rate: 1.49E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 15 of 60; 8 passed, 7 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,174,902     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       116,398     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:19) (Rate: 1.47E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 16 of 60; 8 passed, 8 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     1,541,129               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,431,204               ACCEPTABLE  Normal outcome                                              
+            1, 0     1,683,683               ACCEPTABLE  Normal outcome                                              
+            1, 2         5,794   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:20) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 17 of 60; 9 passed, 8 failed, 0 soft errs, 0 hard errs)                                                                                                                                                         [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0       579,604     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       128,786     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:18) (Rate: 1.36E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 18 of 60; 9 passed, 9 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,606,389               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,545,724               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,718,673               ACCEPTABLE  Normal outcome                                              
+            1, 2         8,794   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:19) (Rate: 1.35E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 19 of 60; 10 passed, 9 failed, 0 soft errs, 0 hard errs)                                                                                                                                                          [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,004,822     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       163,488     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:18) (Rate: 1.34E+07 samples/sec) (Tests: 2 of 2) (Forks:  4 of 12) (Iterations: 20 of 60; 10 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:20) (Rate: 1.20E+07 samples/sec) (Tests: 2 of 2) (Forks:  5 of 12) (Iterations: 21 of 60; 11 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,543,288               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,340,107               ACCEPTABLE  Normal outcome                                              
+            1, 0     2,604,213               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,222   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:19) (Rate: 1.25E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 22 of 60; 12 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:19) (Rate: 1.22E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 23 of 60; 13 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,582,617               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,132,902               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,842,902               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,699   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:18) (Rate: 1.29E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 24 of 60; 14 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:18) (Rate: 1.24E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 25 of 60; 15 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,937,122               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,501,745               ACCEPTABLE  Normal outcome                                              
+            1, 0     2,825,434               ACCEPTABLE  Normal outcome                                              
+            1, 2         5,109   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:16) (Rate: 1.29E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 26 of 60; 16 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:16) (Rate: 1.29E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 27 of 60; 17 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,798,253               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,155,983               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,961,035               ACCEPTABLE  Normal outcome                                              
+            1, 2         7,059   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:15) (Rate: 1.34E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 28 of 60; 18 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:15) (Rate: 1.32E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 29 of 60; 19 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,006,802               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,228,821               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,032,325               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,952   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:14) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  6 of 12) (Iterations: 30 of 60; 20 passed, 10 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0       545,600     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     5,264,110     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:14) (Rate: 1.33E+07 samples/sec) (Tests: 2 of 2) (Forks:  7 of 12) (Iterations: 31 of 60; 20 passed, 11 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,443,818     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,575,782     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:13) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 32 of 60; 20 passed, 12 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0       493,763     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     8,893,177     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:13) (Rate: 1.36E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 33 of 60; 20 passed, 13 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     7,892,783     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,945,027     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:12) (Rate: 1.42E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 34 of 60; 20 passed, 14 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,485,591     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     4,697,539     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:12) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 35 of 60; 20 passed, 15 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     3,621,632     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     1,910,328     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:11) (Rate: 1.40E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 36 of 60; 20 passed, 16 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     1,606,815     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     6,571,045     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:11) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 37 of 60; 20 passed, 17 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,576,982     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,628,308     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:10) (Rate: 1.42E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 38 of 60; 20 passed, 18 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     2,570,321     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     7,125,669     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:10) (Rate: 1.40E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 39 of 60; 20 passed, 19 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     5,712,639     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     5,093,051     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:09) (Rate: 1.45E+07 samples/sec) (Tests: 2 of 2) (Forks:  8 of 12) (Iterations: 40 of 60; 20 passed, 20 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     3,591,594     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     3,038,856     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:09) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks:  9 of 12) (Iterations: 41 of 60; 20 passed, 21 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     1,693,092               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,075,158               ACCEPTABLE  Normal outcome                                              
+            1, 0     1,296,697               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,303   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:08) (Rate: 1.39E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 42 of 60; 21 passed, 21 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     4,072,208     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     1,584,252     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:08) (Rate: 1.36E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 43 of 60; 21 passed, 22 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,799,570               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,684,863               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,673,127               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,170   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:07) (Rate: 1.39E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 44 of 60; 22 passed, 22 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     3,081,220     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     4,128,720     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:07) (Rate: 1.37E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 45 of 60; 22 passed, 23 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,790,834               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,973,328               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,954,644               ACCEPTABLE  Normal outcome                                              
+            1, 2         5,234   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:06) (Rate: 1.40E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 46 of 60; 23 passed, 23 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     5,549,264     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     1,487,526     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:06) (Rate: 1.38E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 47 of 60; 23 passed, 24 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,006,844               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,551,065               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,280,818               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,723   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:05) (Rate: 1.41E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 48 of 60; 24 passed, 24 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     5,518,840     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     3,126,120     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:05) (Rate: 1.40E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 49 of 60; 24 passed, 25 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,303,789               ACCEPTABLE  Normal outcome                                              
+            0, 2     3,071,044               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,250,030               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,917   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:04) (Rate: 1.44E+07 samples/sec) (Tests: 2 of 2) (Forks: 10 of 12) (Iterations: 50 of 60; 25 passed, 25 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,102,775               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,560,611               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,921,016               ACCEPTABLE  Normal outcome                                              
+            1, 2        11,348   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:04) (Rate: 1.44E+07 samples/sec) (Tests: 2 of 2) (Forks: 11 of 12) (Iterations: 51 of 60; 26 passed, 25 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #1, JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,304,560     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     3,168,430     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:03) (Rate: 1.46E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 52 of 60; 26 passed, 26 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,006,703               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,570,930               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,299,241               ACCEPTABLE  Normal outcome                                              
+            1, 2         5,576   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:03) (Rate: 1.45E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 53 of 60; 27 passed, 26 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #2, JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    11,460,970     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     2,335,640     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:02) (Rate: 1.49E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 54 of 60; 27 passed, 27 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,941,079               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,975,793               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,785,986               ACCEPTABLE  Normal outcome                                              
+            1, 2         8,472   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:02) (Rate: 1.48E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 55 of 60; 28 passed, 27 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #3, JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,066,333     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     5,427,737     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:01) (Rate: 1.51E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 56 of 60; 28 passed, 28 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,016,755               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,896,020               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,069,733               ACCEPTABLE  Normal outcome                                              
+            1, 2         6,052   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:01) (Rate: 1.50E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 57 of 60; 29 passed, 28 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #4, JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     8,448,717     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     4,772,443     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:   00:00:00) (Rate: 1.53E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 58 of 60; 29 passed, 29 failed, 0 soft errs, 0 hard errs)                                                                                                                                                               [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     6,272,626               ACCEPTABLE  Normal outcome                                              
+            0, 2     4,006,435               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,720,865               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,744   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:        now) (Rate: 1.54E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 59 of 60; 30 passed, 29 failed, 0 soft errs, 0 hard errs)                                                                                                                                                           [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (fork: #1, iteration #5, JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,631,190     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0     3,000,730     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+(ETA:        now) (Rate: 1.56E+07 samples/sec) (Tests: 2 of 2) (Forks: 12 of 12) (Iterations: 60 of 60; 30 passed, 30 failed, 0 soft errs, 0 hard errs) 
+
+RUN COMPLETE.
+
+RUN RESULTS:
+------------------------------------------------------------------------------------------------------------------------
+
+*** INTERESTING tests
+  Some interesting behaviors observed. This is for the plain curiosity.
+
+  4 matching test results. 
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    20,339,938               ACCEPTABLE  Normal outcome                                              
+            0, 2    13,009,789               ACCEPTABLE  Normal outcome                                              
+            1, 0    20,796,841               ACCEPTABLE  Normal outcome                                              
+            1, 2        35,192   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    20,822,561               ACCEPTABLE  Normal outcome                                              
+            0, 2    10,841,173               ACCEPTABLE  Normal outcome                                              
+            1, 0    25,533,221               ACCEPTABLE  Normal outcome                                              
+            1, 2        40,035   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    16,594,129               ACCEPTABLE  Normal outcome                                              
+            0, 2    10,355,458               ACCEPTABLE  Normal outcome                                              
+            1, 0    18,455,316               ACCEPTABLE  Normal outcome                                              
+            1, 2        19,347   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    16,868,082               ACCEPTABLE  Normal outcome                                              
+            0, 2     7,359,558               ACCEPTABLE  Normal outcome                                              
+            1, 0    19,265,909               ACCEPTABLE  Normal outcome                                              
+            1, 2        22,041   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+
+*** SPEC tests
+  Formally acceptable, but surprising results are observed. Implementations going beyond the minimal requirements should have none.
+
+  0 matching test results. 
+
+*** FAILED tests
+  Strong asserts were violated. Correct implementations should have no assert failures here.
+
+  6 matching test results. 
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-XX:TieredStopAtLevel=1])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     6,702,090     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0    32,551,540     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-Xint])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0     4,998,917     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0       698,013     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    21,813,126     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0    13,365,474     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-server])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    42,097,951     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0    14,141,249     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    30,247,854     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0    15,152,496     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+  [FAILED] test.src.main.java.org.sample.UnsafePublication
+    (JVM args: [-client])
+  Observed state   Occurrences   Expectation  Interpretation                                              
+              -1             0    ACCEPTABLE  The object is not yet published                             
+           -1, 0    38,911,770     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+               0             0    ACCEPTABLE  The object is published, but all fields are 0.              
+               1             0    ACCEPTABLE  The object is published, at least 1 field is visible.       
+               2             0    ACCEPTABLE  The object is published, at least 2 fields are visible.     
+               3             0    ACCEPTABLE  The object is published, at least 3 fields are visible.     
+               4             0    ACCEPTABLE  The object is published, all fields are visible.            
+            4, 0    18,704,980     FORBIDDEN  No default case provided, assume FORBIDDEN                  
+
+
+*** ERROR tests
+  Tests break for some reason, other than failing the assert. Correct implementations should have none.
+
+  0 matching test results. 
+
+*** All remaining tests
+  Tests that do not fall into any of the previous categories.
+
+  2 matching test results.  Use -v to print them.
+
+------------------------------------------------------------------------------------------------------------------------
+
+HTML report was generated. Look at results/index.html for the complete run results.
+
+Will throw any pending exceptions at this point.

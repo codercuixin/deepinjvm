@@ -1,0 +1,122 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture15/ForeachTest.class
+  Last modified 2019-10-16; size 705 bytes
+  MD5 checksum 667ab9a2fe4a68664c2daacc18db35a2
+  Compiled from "ForeachTest.java"
+public class lecture15.ForeachTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #7.#22         // java/lang/Object."<init>":()V
+   #2 = Methodref          #23.#24        // java/util/ArrayList.iterator:()Ljava/util/Iterator;
+   #3 = InterfaceMethodref #25.#26        // java/util/Iterator.hasNext:()Z
+   #4 = InterfaceMethodref #25.#27        // java/util/Iterator.next:()Ljava/lang/Object;
+   #5 = Class              #28            // java/lang/Integer
+   #6 = Class              #29            // lecture15/ForeachTest
+   #7 = Class              #30            // java/lang/Object
+   #8 = Utf8               <init>
+   #9 = Utf8               ()V
+  #10 = Utf8               Code
+  #11 = Utf8               LineNumberTable
+  #12 = Utf8               foo
+  #13 = Utf8               ([I)V
+  #14 = Utf8               StackMapTable
+  #15 = Class              #31            // "[I"
+  #16 = Utf8               (Ljava/util/ArrayList;)V
+  #17 = Class              #32            // java/util/Iterator
+  #18 = Utf8               Signature
+  #19 = Utf8               (Ljava/util/ArrayList<Ljava/lang/Integer;>;)V
+  #20 = Utf8               SourceFile
+  #21 = Utf8               ForeachTest.java
+  #22 = NameAndType        #8:#9          // "<init>":()V
+  #23 = Class              #33            // java/util/ArrayList
+  #24 = NameAndType        #34:#35        // iterator:()Ljava/util/Iterator;
+  #25 = Class              #32            // java/util/Iterator
+  #26 = NameAndType        #36:#37        // hasNext:()Z
+  #27 = NameAndType        #38:#39        // next:()Ljava/lang/Object;
+  #28 = Utf8               java/lang/Integer
+  #29 = Utf8               lecture15/ForeachTest
+  #30 = Utf8               java/lang/Object
+  #31 = Utf8               [I
+  #32 = Utf8               java/util/Iterator
+  #33 = Utf8               java/util/ArrayList
+  #34 = Utf8               iterator
+  #35 = Utf8               ()Ljava/util/Iterator;
+  #36 = Utf8               hasNext
+  #37 = Utf8               ()Z
+  #38 = Utf8               next
+  #39 = Utf8               ()Ljava/lang/Object;
+{
+  public lecture15.ForeachTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 10: 0
+
+  public void foo(int[]);
+    descriptor: ([I)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=6, args_size=2
+         0: aload_1
+         1: astore_2
+         2: aload_2
+         3: arraylength
+         4: istore_3
+         5: iconst_0
+         6: istore        4
+         8: iload         4
+        10: iload_3
+        11: if_icmpge     26
+        14: aload_2
+        15: iload         4
+        17: iaload
+        18: istore        5
+        20: iinc          4, 1
+        23: goto          8
+        26: return
+      LineNumberTable:
+        line 12: 0
+        line 15: 26
+      StackMapTable: number_of_entries = 2
+        frame_type = 254 /* append */
+          offset_delta = 8
+          locals = [ class "[I", int, int ]
+        frame_type = 248 /* chop */
+          offset_delta = 17
+
+  public void foo(java.util.ArrayList<java.lang.Integer>);
+    descriptor: (Ljava/util/ArrayList;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=4, args_size=2
+         0: aload_1
+         1: invokevirtual #2                  // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+         4: astore_2
+         5: aload_2
+         6: invokeinterface #3,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+        11: ifeq          27
+        14: aload_2
+        15: invokeinterface #4,  1            // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        20: checkcast     #5                  // class java/lang/Integer
+        23: astore_3
+        24: goto          5
+        27: return
+      LineNumberTable:
+        line 17: 0
+        line 19: 24
+        line 20: 27
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 5
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 21
+    Signature: #19                          // (Ljava/util/ArrayList<Ljava/lang/Integer;>;)V
+}
+SourceFile: "ForeachTest.java"

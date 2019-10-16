@@ -1,0 +1,293 @@
+Java Concurrency Stress Tests
+---------------------------------------------------------------------------------
+Rev: null, built by Administrator with 1.8.0_91 at null
+
+Probing what VM modes are available:
+ (failures are non-fatal, but may miss some interesting cases)
+
+----- [OK] [-Xint]
+----- [OK] [-XX:TieredStopAtLevel=1]
+----- [OK] [-client]
+----- [OK] [-client, -XX:-TieredCompilation]
+----- [OK] [-server]
+----- [N/A] [-server, -XX:+UnlockDiagnosticVMOptions, -XX:+StressLCM, -XX:+StressGCM]
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+Error: VM option 'StressLCM' is develop and is available only in debug version of VM.
+
+
+----- [OK] [-server, -XX:-TieredCompilation]
+----- [N/A] [-server, -XX:-TieredCompilation, -XX:+UnlockDiagnosticVMOptions, -XX:+StressLCM, -XX:+StressGCM]
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+Error: VM option 'StressLCM' is develop and is available only in debug version of VM.
+
+
+
+Initializing and probing the target VM: 
+ (all failures are non-fatal, but may affect testing accuracy)
+
+----- [OK] Adding ourselves to bootclasspath: D:\IdeaProject\deepinjvm\src\main\java\test\target\jcstress.jar
+----- [OK] Unlocking diagnostic VM options
+----- [OK] Trimming down the number of compiler threads
+----- [OK] Trimming down the number of parallel GC threads
+----- [OK] Trimming down the number of concurrent GC threads
+----- [OK] Trimming down the number of G1 concurrent refinement GC threads
+----- [OK] Testing @Contended works on all results and infra objects
+----- [OK] Unlocking Whitebox API for online de-optimization
+----- [OK] Testing allocation profiling
+----- [FAILED] Trying Thread.onSpinWait
+Exception in thread "main" java.lang.NoSuchMethodError: java.lang.Thread.onSpinWait()V
+	at org.openjdk.jcstress.vm.ThreadSpinWaitTestMain.main(ThreadSpinWaitTestMain.java:30)
+
+
+Burning up to figure out the exact CPU count....... done!
+
+  Hardware threads in use/available: 4/4, no yielding.
+  Test preset mode: "default"
+  Writing the test results to "jcstress.1571041851807"
+  Parsing results to "results/"
+  Running each test matching ".*" for 1 forks, 5 iterations, 1000 ms each
+  Each JVM would execute at most 5 tests in the row.
+  Solo stride size will be autobalanced within [10, 10000] elements, but taking no more than 100 Mb.
+
+       [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,707,037               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,442,783               ACCEPTABLE  Normal outcome                                              
+            1, 0     2,790,982               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,838   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:00) (Rate: 4.05E+08 samples/sec) (Tests: 1 of 1) (Forks:  1 of 6) (Iterations:  1 of 30; 1 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:00) (Rate: 2.20E+08 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  2 of 30; 2 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,855,259               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,468,730               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,227,214               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,507   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:09) (Rate: 1.66E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  3 of 30; 3 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:07) (Rate: 1.57E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  4 of 30; 4 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,709,912               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,552,050               ACCEPTABLE  Normal outcome                                              
+            1, 0     7,114,560               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,068   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:09) (Rate: 1.54E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  5 of 30; 5 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:08) (Rate: 1.50E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  6 of 30; 6 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,034,006               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,703,868               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,038,556               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,700   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:09) (Rate: 1.33E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  7 of 30; 7 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:08) (Rate: 1.29E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  8 of 30; 8 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     6,037,631               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,755,832               ACCEPTABLE  Normal outcome                                              
+            1, 0     8,258,559               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,908   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:09) (Rate: 1.45E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations:  9 of 30; 9 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                            [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:08) (Rate: 1.39E+07 samples/sec) (Tests: 1 of 1) (Forks:  2 of 6) (Iterations: 10 of 30; 10 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,681,066               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,254,169               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,263,255               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,970   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:09) (Rate: 1.11E+07 samples/sec) (Tests: 1 of 1) (Forks:  3 of 6) (Iterations: 11 of 30; 11 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,661,171               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,956,669               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,158,788               ACCEPTABLE  Normal outcome                                              
+            1, 2         1,002   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:08) (Rate: 1.25E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 12 of 30; 12 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,098,082               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,388,049               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,343,602               ACCEPTABLE  Normal outcome                                              
+            1, 2         1,207   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:08) (Rate: 1.23E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 13 of 30; 13 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,394,916               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,103,757               ACCEPTABLE  Normal outcome                                              
+            1, 0     1,906,985               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,242   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:07) (Rate: 1.29E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 14 of 30; 14 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     5,084,294               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,063,814               ACCEPTABLE  Normal outcome                                              
+            1, 0     4,389,615               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,887   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:07) (Rate: 1.29E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 15 of 30; 15 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     6,134,457               ACCEPTABLE  Normal outcome                                              
+            0, 2     5,225,157               ACCEPTABLE  Normal outcome                                              
+            1, 0     6,373,260               ACCEPTABLE  Normal outcome                                              
+            1, 2         1,036   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:06) (Rate: 1.48E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 16 of 30; 16 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     5,546,588               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,322,805               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,707,681               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,036   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:06) (Rate: 1.46E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 17 of 30; 17 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,960,608               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,801,422               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,436,471               ACCEPTABLE  Normal outcome                                              
+            1, 2         5,209   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:05) (Rate: 1.56E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 18 of 30; 18 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,714,825               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,230,170               ACCEPTABLE  Normal outcome                                              
+            1, 0     6,819,200               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,695   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:05) (Rate: 1.54E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 19 of 30; 19 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     5,581,890               ACCEPTABLE  Normal outcome                                              
+            0, 2     2,159,691               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,222,422               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,507   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:04) (Rate: 1.65E+07 samples/sec) (Tests: 1 of 1) (Forks:  4 of 6) (Iterations: 20 of 30; 20 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:04) (Rate: 1.43E+07 samples/sec) (Tests: 1 of 1) (Forks:  5 of 6) (Iterations: 21 of 30; 21 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #1, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,996,401               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,059,987               ACCEPTABLE  Normal outcome                                              
+            1, 0     3,384,650               ACCEPTABLE  Normal outcome                                              
+            1, 2           382   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:03) (Rate: 1.49E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 22 of 30; 22 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:03) (Rate: 1.44E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 23 of 30; 23 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #2, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     3,648,717               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,874,471               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,218,991               ACCEPTABLE  Normal outcome                                              
+            1, 2         2,331   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:02) (Rate: 1.50E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 24 of 30; 24 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:02) (Rate: 1.49E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 25 of 30; 25 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #3, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,054,549               ACCEPTABLE  Normal outcome                                              
+            0, 2     3,319,692               ACCEPTABLE  Normal outcome                                              
+            1, 0     5,561,561               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,318   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:01) (Rate: 1.57E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 26 of 30; 26 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:   00:00:01) (Rate: 1.55E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 27 of 30; 27 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #4, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     4,777,822               ACCEPTABLE  Normal outcome                                              
+            0, 2     3,651,469               ACCEPTABLE  Normal outcome                                              
+            1, 0     6,313,768               ACCEPTABLE  Normal outcome                                              
+            1, 2         3,031   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:   00:00:00) (Rate: 1.63E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 28 of 30; 28 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+(ETA:        now) (Rate: 1.58E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 29 of 30; 29 passed, 0 failed, 0 soft errs, 0 hard errs)                                                                                                                                                             [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (fork: #1, iteration #5, JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0     2,878,080               ACCEPTABLE  Normal outcome                                              
+            0, 2     1,560,411               ACCEPTABLE  Normal outcome                                              
+            1, 0     2,234,665               ACCEPTABLE  Normal outcome                                              
+            1, 2         4,154   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+(ETA:        now) (Rate: 1.61E+07 samples/sec) (Tests: 1 of 1) (Forks:  6 of 6) (Iterations: 30 of 30; 30 passed, 0 failed, 0 soft errs, 0 hard errs) 
+
+RUN COMPLETE.
+
+RUN RESULTS:
+------------------------------------------------------------------------------------------------------------------------
+
+*** INTERESTING tests
+  Some interesting behaviors observed. This is for the plain curiosity.
+
+  4 matching test results. 
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-server])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    19,343,845               ACCEPTABLE  Normal outcome                                              
+            0, 2     8,923,263               ACCEPTABLE  Normal outcome                                              
+            1, 0    26,429,871               ACCEPTABLE  Normal outcome                                              
+            1, 2        16,021   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-server, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    20,124,855               ACCEPTABLE  Normal outcome                                              
+            0, 2    10,259,007               ACCEPTABLE  Normal outcome                                              
+            1, 0    22,523,353               ACCEPTABLE  Normal outcome                                              
+            1, 2        15,795   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-client])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    20,355,569               ACCEPTABLE  Normal outcome                                              
+            0, 2    11,466,030               ACCEPTABLE  Normal outcome                                              
+            1, 0    22,713,635               ACCEPTABLE  Normal outcome                                              
+            1, 2        14,216   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+      [OK] test.src.main.java.org.sample.ConcurrencyTest
+    (JVM args: [-client, -XX:-TieredCompilation])
+  Observed state   Occurrences              Expectation  Interpretation                                              
+            0, 0    22,733,042               ACCEPTABLE  Normal outcome                                              
+            0, 2    13,246,696               ACCEPTABLE  Normal outcome                                              
+            1, 0    21,097,926               ACCEPTABLE  Normal outcome                                              
+            1, 2        15,996   ACCEPTABLE_INTERESTING  Abnormal outcome                                            
+
+
+*** SPEC tests
+  Formally acceptable, but surprising results are observed. Implementations going beyond the minimal requirements should have none.
+
+  0 matching test results. 
+
+*** FAILED tests
+  Strong asserts were violated. Correct implementations should have no assert failures here.
+
+  0 matching test results. 
+
+*** ERROR tests
+  Tests break for some reason, other than failing the assert. Correct implementations should have none.
+
+  0 matching test results. 
+
+*** All remaining tests
+  Tests that do not fall into any of the previous categories.
+
+  2 matching test results.  Use -v to print them.
+
+------------------------------------------------------------------------------------------------------------------------
+
+HTML report was generated. Look at results/index.html for the complete run results.
+
+Will throw any pending exceptions at this point.
+Done.

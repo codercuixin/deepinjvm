@@ -1,0 +1,52 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture15/BridgeMethod.class
+  Last modified 2019-10-16; size 459 bytes
+  MD5 checksum 1b16dc7078fbb4b0348a5ecc7deb82b1
+  Compiled from "BridgeMethod.java"
+public class lecture15.BridgeMethod
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #3.#19         // java/lang/Object."<init>":()V
+   #2 = Class              #20            // lecture15/BridgeMethod
+   #3 = Class              #21            // java/lang/Object
+   #4 = Class              #22            // lecture15/BridgeMethod$VIPOnlyMerchant
+   #5 = Utf8               VIPOnlyMerchant
+   #6 = Utf8               InnerClasses
+   #7 = Class              #23            // lecture15/BridgeMethod$Merchant
+   #8 = Utf8               Merchant
+   #9 = Class              #24            // lecture15/BridgeMethod$VIP
+  #10 = Utf8               VIP
+  #11 = Class              #25            // lecture15/BridgeMethod$Customer
+  #12 = Utf8               Customer
+  #13 = Utf8               <init>
+  #14 = Utf8               ()V
+  #15 = Utf8               Code
+  #16 = Utf8               LineNumberTable
+  #17 = Utf8               SourceFile
+  #18 = Utf8               BridgeMethod.java
+  #19 = NameAndType        #13:#14        // "<init>":()V
+  #20 = Utf8               lecture15/BridgeMethod
+  #21 = Utf8               java/lang/Object
+  #22 = Utf8               lecture15/BridgeMethod$VIPOnlyMerchant
+  #23 = Utf8               lecture15/BridgeMethod$Merchant
+  #24 = Utf8               lecture15/BridgeMethod$VIP
+  #25 = Utf8               lecture15/BridgeMethod$Customer
+{
+  public lecture15.BridgeMethod();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+}
+SourceFile: "BridgeMethod.java"
+InnerClasses:
+     #5= #4 of #2; //VIPOnlyMerchant=class lecture15/BridgeMethod$VIPOnlyMerchant of class lecture15/BridgeMethod
+     #8= #7 of #2; //Merchant=class lecture15/BridgeMethod$Merchant of class lecture15/BridgeMethod
+     static #10= #9 of #2; //VIP=class lecture15/BridgeMethod$VIP of class lecture15/BridgeMethod
+     static #12= #11 of #2; //Customer=class lecture15/BridgeMethod$Customer of class lecture15/BridgeMethod

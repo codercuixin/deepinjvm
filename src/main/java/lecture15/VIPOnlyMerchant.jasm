@@ -1,0 +1,67 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture15/VIPOnlyMerchant.class
+  Last modified 2019-10-16; size 450 bytes
+  MD5 checksum 36b2e640f76070866adfd3249403c7ef
+  Compiled from "BridgeMethod.java"
+class lecture15.VIPOnlyMerchant extends lecture15.Merchant<lecture15.VIP>
+  minor version: 0
+  major version: 52
+  flags: ACC_SUPER
+Constant pool:
+   #1 = Methodref          #5.#17         // lecture15/Merchant."<init>":()V
+   #2 = Class              #18            // lecture15/VIP
+   #3 = Methodref          #4.#19         // lecture15/VIPOnlyMerchant.actionPrice:(Llecture15/VIP;)D
+   #4 = Class              #20            // lecture15/VIPOnlyMerchant
+   #5 = Class              #21            // lecture15/Merchant
+   #6 = Utf8               <init>
+   #7 = Utf8               ()V
+   #8 = Utf8               Code
+   #9 = Utf8               LineNumberTable
+  #10 = Utf8               actionPrice
+  #11 = Utf8               (Llecture15/VIP;)D
+  #12 = Utf8               (Llecture15/Customer;)D
+  #13 = Utf8               Signature
+  #14 = Utf8               Llecture15/Merchant<Llecture15/VIP;>;
+  #15 = Utf8               SourceFile
+  #16 = Utf8               BridgeMethod.java
+  #17 = NameAndType        #6:#7          // "<init>":()V
+  #18 = Utf8               lecture15/VIP
+  #19 = NameAndType        #10:#11        // actionPrice:(Llecture15/VIP;)D
+  #20 = Utf8               lecture15/VIPOnlyMerchant
+  #21 = Utf8               lecture15/Merchant
+{
+  lecture15.VIPOnlyMerchant();
+    descriptor: ()V
+    flags:
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method lecture15/Merchant."<init>":()V
+         4: return
+      LineNumberTable:
+        line 21: 0
+
+  public double actionPrice(lecture15.VIP);
+    descriptor: (Llecture15/VIP;)D
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: dconst_0
+         1: dreturn
+      LineNumberTable:
+        line 24: 0
+
+  public double actionPrice(lecture15.Customer);
+    descriptor: (Llecture15/Customer;)D
+    flags: ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: checkcast     #2                  // class lecture15/VIP
+         5: invokevirtual #3                  // Method actionPrice:(Llecture15/VIP;)D
+         8: dreturn
+      LineNumberTable:
+        line 21: 0
+}
+Signature: #14                          // Llecture15/Merchant<Llecture15/VIP;>;
+SourceFile: "BridgeMethod.java"

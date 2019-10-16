@@ -1,0 +1,53 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture15/bridgeMethod2/Merchant.class
+  Last modified 2019-10-16; size 401 bytes
+  MD5 checksum a0269d32c3d43e4fc7904ab0c7ac8204
+  Compiled from "BridgeMethod2.java"
+class lecture15.bridgeMethod2.Merchant
+  minor version: 0
+  major version: 52
+  flags: ACC_SUPER
+Constant pool:
+   #1 = Methodref          #4.#13         // java/lang/Object."<init>":()V
+   #2 = Methodref          #14.#15        // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+   #3 = Class              #16            // lecture15/bridgeMethod2/Merchant
+   #4 = Class              #17            // java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Utf8               Code
+   #8 = Utf8               LineNumberTable
+   #9 = Utf8               actionPrice
+  #10 = Utf8               (Llecture15/bridgeMethod2/Customer;)Ljava/lang/Number;
+  #11 = Utf8               SourceFile
+  #12 = Utf8               BridgeMethod2.java
+  #13 = NameAndType        #5:#6          // "<init>":()V
+  #14 = Class              #18            // java/lang/Integer
+  #15 = NameAndType        #19:#20        // valueOf:(I)Ljava/lang/Integer;
+  #16 = Utf8               lecture15/bridgeMethod2/Merchant
+  #17 = Utf8               java/lang/Object
+  #18 = Utf8               java/lang/Integer
+  #19 = Utf8               valueOf
+  #20 = Utf8               (I)Ljava/lang/Integer;
+{
+  lecture15.bridgeMethod2.Merchant();
+    descriptor: ()V
+    flags:
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 11: 0
+
+  public java.lang.Number actionPrice(lecture15.bridgeMethod2.Customer);
+    descriptor: (Llecture15/bridgeMethod2/Customer;)Ljava/lang/Number;
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: iconst_0
+         1: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         4: areturn
+      LineNumberTable:
+        line 13: 0
+}
+SourceFile: "BridgeMethod2.java"

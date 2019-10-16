@@ -1,0 +1,114 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture15/SwitchTest.class
+  Last modified 2019-10-16; size 581 bytes
+  MD5 checksum 3c8cd322985f25f9135b44d318ec90f4
+  Compiled from "SwitchTest.java"
+public class lecture15.SwitchTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #10.#21        // java/lang/Object."<init>":()V
+   #2 = Methodref          #22.#23        // java/lang/String.hashCode:()I
+   #3 = String             #24            // 1
+   #4 = Methodref          #22.#25        // java/lang/String.equals:(Ljava/lang/Object;)Z
+   #5 = String             #26            // 2
+   #6 = String             #27            // hi
+   #7 = String             #28            // hello
+   #8 = String             #29            // who are you?
+   #9 = Class              #30            // lecture15/SwitchTest
+  #10 = Class              #31            // java/lang/Object
+  #11 = Utf8               <init>
+  #12 = Utf8               ()V
+  #13 = Utf8               Code
+  #14 = Utf8               LineNumberTable
+  #15 = Utf8               test
+  #16 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #17 = Utf8               StackMapTable
+  #18 = Class              #32            // java/lang/String
+  #19 = Utf8               SourceFile
+  #20 = Utf8               SwitchTest.java
+  #21 = NameAndType        #11:#12        // "<init>":()V
+  #22 = Class              #32            // java/lang/String
+  #23 = NameAndType        #33:#34        // hashCode:()I
+  #24 = Utf8               1
+  #25 = NameAndType        #35:#36        // equals:(Ljava/lang/Object;)Z
+  #26 = Utf8               2
+  #27 = Utf8               hi
+  #28 = Utf8               hello
+  #29 = Utf8               who are you?
+  #30 = Utf8               lecture15/SwitchTest
+  #31 = Utf8               java/lang/Object
+  #32 = Utf8               java/lang/String
+  #33 = Utf8               hashCode
+  #34 = Utf8               ()I
+  #35 = Utf8               equals
+  #36 = Utf8               (Ljava/lang/Object;)Z
+{
+  public lecture15.SwitchTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  public java.lang.String test(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_1
+         1: astore_2
+         2: iconst_m1
+         3: istore_3
+         4: aload_2
+         5: invokevirtual #2                  // Method java/lang/String.hashCode:()I
+         8: lookupswitch  { // 2
+                      49: 36
+                      50: 50
+                 default: 61
+            }
+        36: aload_2
+        37: ldc           #3                  // String 1
+        39: invokevirtual #4                  // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        42: ifeq          61
+        45: iconst_0
+        46: istore_3
+        47: goto          61
+        50: aload_2
+        51: ldc           #5                  // String 2
+        53: invokevirtual #4                  // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        56: ifeq          61
+        59: iconst_1
+        60: istore_3
+        61: iload_3
+        62: lookupswitch  { // 2
+                       0: 88
+                       1: 91
+                 default: 94
+            }
+        88: ldc           #6                  // String hi
+        90: areturn
+        91: ldc           #7                  // String hello
+        93: areturn
+        94: ldc           #8                  // String who are you?
+        96: areturn
+      LineNumberTable:
+        line 9: 0
+        line 11: 88
+        line 13: 91
+        line 15: 94
+      StackMapTable: number_of_entries = 6
+        frame_type = 253 /* append */
+          offset_delta = 36
+          locals = [ class java/lang/String, int ]
+        frame_type = 13 /* same */
+        frame_type = 10 /* same */
+        frame_type = 26 /* same */
+        frame_type = 2 /* same */
+        frame_type = 2 /* same */
+}
+SourceFile: "SwitchTest.java"

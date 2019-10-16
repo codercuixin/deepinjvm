@@ -1,0 +1,11 @@
+test\src\main\java\org\sample\UnsafePublication_jcstress.class
+test\src\main\java\org\sample\ConcurrencyTest_jcstress.class
+org\openjdk\jcstress\infra\results\IntResult2_jcstress_c2.class
+test\src\main\java\org\sample\ConcurrencyTest.class
+test\src\main\java\org\sample\ConcurrencyTest_jcstress$Pair.class
+org\openjdk\jcstress\infra\results\IntResult2_jcstress_c1.class
+test\src\main\java\org\sample\UnsafePublication_jcstress$Pair.class
+META-INF\TestList
+org\openjdk\jcstress\infra\results\IntResult2_jcstress.class
+test\src\main\java\org\sample\UnsafePublication$MyObject.class
+test\src\main\java\org\sample\UnsafePublication.class
