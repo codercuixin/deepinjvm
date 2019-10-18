@@ -1,0 +1,292 @@
+CompilerOracle: print lecture17/CompilationTest.foo
+Compiled method (c1)     118   28       3       lecture17.CompilationTest::foo (30 bytes)
+ total in heap  [0x0000000003674a90,0x0000000003674fd0] = 1344
+ relocation     [0x0000000003674bb0,0x0000000003674c10] = 96
+ main code      [0x0000000003674c20,0x0000000003674e00] = 480
+ stub code      [0x0000000003674e00,0x0000000003674eb8] = 184
+ oops           [0x0000000003674eb8,0x0000000003674ec0] = 8
+ metadata       [0x0000000003674ec0,0x0000000003674ec8] = 8
+ scopes data    [0x0000000003674ec8,0x0000000003674f18] = 80
+ scopes pcs     [0x0000000003674f18,0x0000000003674fc8] = 176
+ dependencies   [0x0000000003674fc8,0x0000000003674fd0] = 8
+Loaded disassembler from hsdis-amd64.dll
+Decoding compiled method 0x0000000003674a90:
+Code:
+[Disassembling for mach='i386:x86-64']
+[Entry Point]
+[Verified Entry Point]
+[Constants]
+  # {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest'
+  # parm0:    rdx       = boolean
+  # parm1:    r8        = int
+  #           [sp+0x40]  (sp of caller)
+  0x0000000003674c20: mov    %eax,-0x6000(%rsp)
+  0x0000000003674c27: push   %rbp
+  0x0000000003674c28: sub    $0x30,%rsp
+  0x0000000003674c2c: movabs $0x1c5b0548,%rsi   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674c36: mov    0xdc(%rsi),%edi
+  0x0000000003674c3c: add    $0x8,%edi
+  0x0000000003674c3f: mov    %edi,0xdc(%rsi)
+  0x0000000003674c45: movabs $0x1c5b0318,%rsi   ;   {metadata({method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674c4f: and    $0x1ff8,%edi
+  0x0000000003674c55: cmp    $0x0,%edi
+  0x0000000003674c58: je     0x0000000003674d70  ;*iload_0
+                                                ; - lecture17.CompilationTest::foo@0 (line 18)
+
+  0x0000000003674c5e: cmp    $0x0,%edx
+  0x0000000003674c61: movabs $0x1c5b0548,%rsi   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674c6b: movabs $0x108,%rdi
+  0x0000000003674c75: je     0x0000000003674c85
+  0x0000000003674c7b: movabs $0x118,%rdi
+  0x0000000003674c85: mov    (%rsi,%rdi,1),%rbx
+  0x0000000003674c89: lea    0x1(%rbx),%rbx
+  0x0000000003674c8d: mov    %rbx,(%rsi,%rdi,1)
+  0x0000000003674c91: je     0x0000000003674caf  ;*ifeq
+                                                ; - lecture17.CompilationTest::foo@1 (line 18)
+
+  0x0000000003674c97: movabs $0x1c5b0548,%rsi   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674ca1: incl   0x128(%rsi)
+  0x0000000003674ca7: mov    %r8,%rsi
+  0x0000000003674caa: jmpq   0x0000000003674cec  ;*goto
+                                                ; - lecture17.CompilationTest::foo@6 (line 19)
+
+  0x0000000003674caf: movabs $0x1c5b0548,%rsi   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674cb9: addq   $0x1,0x140(%rsi)
+  0x0000000003674cc1: vcvtsi2sd %r8d,%xmm0,%xmm0
+  0x0000000003674cc6: mov    %r8d,0x20(%rsp)
+  0x0000000003674ccb: nop
+  0x0000000003674ccc: nop
+  0x0000000003674ccd: nop
+  0x0000000003674cce: nop
+  0x0000000003674ccf: callq  0x00000000035a6620  ; OopMap{off=180}
+                                                ;*invokestatic sin
+                                                ; - lecture17.CompilationTest::foo@11 (line 21)
+                                                ;   {static_call}
+  0x0000000003674cd4: vcvttsd2si %xmm0,%eax
+  0x0000000003674cd8: cmp    $0x80000000,%eax
+  0x0000000003674cde: je     0x0000000003674d87
+  0x0000000003674ce4: mov    %rax,%rsi          ;*iload_2
+                                                ; - lecture17.CompilationTest::foo@16 (line 23)
+
+  0x0000000003674ce7: mov    0x20(%rsp),%r8d
+  0x0000000003674cec: cmp    %r8d,%esi
+  0x0000000003674cef: movabs $0x1c5b0548,%rax   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674cf9: movabs $0x150,%rdi
+  0x0000000003674d03: jne    0x0000000003674d13
+  0x0000000003674d09: movabs $0x160,%rdi
+  0x0000000003674d13: mov    (%rax,%rdi,1),%rbx
+  0x0000000003674d17: lea    0x1(%rbx),%rbx
+  0x0000000003674d1b: mov    %rbx,(%rax,%rdi,1)
+  0x0000000003674d1f: jne    0x0000000003674d36  ;*if_icmpne
+                                                ; - lecture17.CompilationTest::foo@18 (line 23)
+
+  0x0000000003674d25: mov    $0x0,%eax
+  0x0000000003674d2a: add    $0x30,%rsp
+  0x0000000003674d2e: pop    %rbp
+  0x0000000003674d2f: test   %eax,-0x1fb4c35(%rip)        # 0x00000000016c0100
+                                                ;   {poll_return}
+  0x0000000003674d35: retq                      ;*ireturn
+                                                ; - lecture17.CompilationTest::foo@22 (line 24)
+
+  0x0000000003674d36: movabs $0x1c5b0548,%rdi   ;   {metadata(method data for {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest')}
+  0x0000000003674d40: addq   $0x1,0x170(%rdi)
+  0x0000000003674d48: vcvtsi2sd %esi,%xmm0,%xmm0
+  0x0000000003674d4c: nop
+  0x0000000003674d4d: nop
+  0x0000000003674d4e: nop
+  0x0000000003674d4f: callq  0x00000000035a6620  ; OopMap{off=308}
+                                                ;*invokestatic cos
+                                                ; - lecture17.CompilationTest::foo@25 (line 26)
+                                                ;   {static_call}
+  0x0000000003674d54: vcvttsd2si %xmm0,%eax
+  0x0000000003674d58: cmp    $0x80000000,%eax
+  0x0000000003674d5e: je     0x0000000003674da0
+  0x0000000003674d64: add    $0x30,%rsp
+  0x0000000003674d68: pop    %rbp
+  0x0000000003674d69: test   %eax,-0x1fb4c6f(%rip)        # 0x00000000016c0100
+                                                ;   {poll_return}
+  0x0000000003674d6f: retq   
+  0x0000000003674d70: mov    %rsi,0x8(%rsp)
+  0x0000000003674d75: movq   $0xffffffffffffffff,(%rsp)
+  0x0000000003674d7d: callq  0x000000000365ede0  ; OopMap{off=354}
+                                                ;*synchronization entry
+                                                ; - lecture17.CompilationTest::foo@-1 (line 18)
+                                                ;   {runtime_call}
+  0x0000000003674d82: jmpq   0x0000000003674c5e
+  0x0000000003674d87: vcomisd 0x73206411(%rip),%xmm0        # 0x000000007687b1a0
+                                                ;   {external_word}
+  0x0000000003674d8f: jp     0x0000000003674d98
+  0x0000000003674d91: jb     0x0000000003674d9b
+  0x0000000003674d93: dec    %rax
+  0x0000000003674d96: jmp    0x0000000003674d9b
+  0x0000000003674d98: xor    %rax,%rax
+  0x0000000003674d9b: jmpq   0x0000000003674ce4
+  0x0000000003674da0: vcomisd 0x732063f8(%rip),%xmm0        # 0x000000007687b1a0
+                                                ;   {external_word}
+  0x0000000003674da8: jp     0x0000000003674db1
+  0x0000000003674daa: jb     0x0000000003674db4
+  0x0000000003674dac: dec    %rax
+  0x0000000003674daf: jmp    0x0000000003674db4
+  0x0000000003674db1: xor    %rax,%rax
+  0x0000000003674db4: jmp    0x0000000003674d64
+  0x0000000003674db6: nop
+  0x0000000003674db7: nop
+  0x0000000003674db8: mov    0x2a8(%r15),%rax
+  0x0000000003674dbf: movabs $0x0,%r10
+  0x0000000003674dc9: mov    %r10,0x2a8(%r15)
+  0x0000000003674dd0: movabs $0x0,%r10
+  0x0000000003674dda: mov    %r10,0x2b0(%r15)
+  0x0000000003674de1: add    $0x30,%rsp
+  0x0000000003674de5: pop    %rbp
+  0x0000000003674de6: jmpq   0x0000000003659e60  ;   {runtime_call}
+  0x0000000003674deb: hlt    
+  0x0000000003674dec: hlt    
+  0x0000000003674ded: hlt    
+  0x0000000003674dee: hlt    
+  0x0000000003674def: hlt    
+  0x0000000003674df0: hlt    
+  0x0000000003674df1: hlt    
+  0x0000000003674df2: hlt    
+  0x0000000003674df3: hlt    
+  0x0000000003674df4: hlt    
+  0x0000000003674df5: hlt    
+  0x0000000003674df6: hlt    
+  0x0000000003674df7: hlt    
+  0x0000000003674df8: hlt    
+  0x0000000003674df9: hlt    
+  0x0000000003674dfa: hlt    
+  0x0000000003674dfb: hlt    
+  0x0000000003674dfc: hlt    
+  0x0000000003674dfd: hlt    
+  0x0000000003674dfe: hlt    
+  0x0000000003674dff: hlt    
+[Stub Code]
+  0x0000000003674e00: nop                       ;   {no_reloc}
+  0x0000000003674e01: nop
+  0x0000000003674e02: nop
+  0x0000000003674e03: nop
+  0x0000000003674e04: nop
+  0x0000000003674e05: movabs $0x0,%rbx          ;   {static_stub}
+  0x0000000003674e0f: jmpq   0x0000000003674e0f  ;   {runtime_call}
+  0x0000000003674e14: nop
+  0x0000000003674e15: movabs $0x0,%rbx          ;   {static_stub}
+  0x0000000003674e1f: jmpq   0x0000000003674e1f  ;   {runtime_call}
+[Exception Handler]
+  0x0000000003674e24: callq  0x000000000365c5a0  ;   {runtime_call}
+  0x0000000003674e29: mov    %rsp,-0x28(%rsp)
+  0x0000000003674e2e: sub    $0x80,%rsp
+  0x0000000003674e35: mov    %rax,0x78(%rsp)
+  0x0000000003674e3a: mov    %rcx,0x70(%rsp)
+  0x0000000003674e3f: mov    %rdx,0x68(%rsp)
+  0x0000000003674e44: mov    %rbx,0x60(%rsp)
+  0x0000000003674e49: mov    %rbp,0x50(%rsp)
+  0x0000000003674e4e: mov    %rsi,0x48(%rsp)
+  0x0000000003674e53: mov    %rdi,0x40(%rsp)
+  0x0000000003674e58: mov    %r8,0x38(%rsp)
+  0x0000000003674e5d: mov    %r9,0x30(%rsp)
+  0x0000000003674e62: mov    %r10,0x28(%rsp)
+  0x0000000003674e67: mov    %r11,0x20(%rsp)
+  0x0000000003674e6c: mov    %r12,0x18(%rsp)
+  0x0000000003674e71: mov    %r13,0x10(%rsp)
+  0x0000000003674e76: mov    %r14,0x8(%rsp)
+  0x0000000003674e7b: mov    %r15,(%rsp)
+  0x0000000003674e7f: movabs $0x766a1230,%rcx   ;   {external_word}
+  0x0000000003674e89: movabs $0x3674e29,%rdx    ;   {internal_word}
+  0x0000000003674e93: mov    %rsp,%r8
+  0x0000000003674e96: and    $0xfffffffffffffff0,%rsp
+  0x0000000003674e9a: callq  0x000000007635fb10  ;   {runtime_call}
+  0x0000000003674e9f: hlt    
+[Deopt Handler Code]
+  0x0000000003674ea0: movabs $0x3674ea0,%r10    ;   {section_word}
+  0x0000000003674eaa: push   %r10
+  0x0000000003674eac: jmpq   0x00000000035a7600  ;   {runtime_call}
+  0x0000000003674eb1: hlt    
+  0x0000000003674eb2: hlt    
+  0x0000000003674eb3: hlt    
+  0x0000000003674eb4: hlt    
+  0x0000000003674eb5: hlt    
+  0x0000000003674eb6: hlt    
+  0x0000000003674eb7: hlt    
+OopMapSet contains 3 OopMaps
+
+#0 
+OopMap{off=180}
+#1 
+OopMap{off=308}
+#2 
+OopMap{off=354}
+Compiled method (c2)     131   30       4       lecture17.CompilationTest::foo (30 bytes)
+ total in heap  [0x0000000003678250,0x0000000003678470] = 544
+ relocation     [0x0000000003678370,0x0000000003678380] = 16
+ main code      [0x0000000003678380,0x00000000036783c0] = 64
+ stub code      [0x00000000036783c0,0x00000000036783d8] = 24
+ oops           [0x00000000036783d8,0x00000000036783e0] = 8
+ metadata       [0x00000000036783e0,0x00000000036783e8] = 8
+ scopes data    [0x00000000036783e8,0x0000000003678408] = 32
+ scopes pcs     [0x0000000003678408,0x0000000003678468] = 96
+ dependencies   [0x0000000003678468,0x0000000003678470] = 8
+Decoding compiled method 0x0000000003678250:
+Code:
+[Entry Point]
+[Verified Entry Point]
+[Constants]
+  # {method} {0x000000001c5b0320} 'foo' '(ZI)I' in 'lecture17/CompilationTest'
+  # parm0:    rdx       = boolean
+  # parm1:    r8        = int
+  #           [sp+0x30]  (sp of caller)
+  0x0000000003678380: mov    %eax,-0x6000(%rsp)
+  0x0000000003678387: push   %rbp
+  0x0000000003678388: sub    $0x20,%rsp         ;*synchronization entry
+                                                ; - lecture17.CompilationTest::foo@-1 (line 18)
+
+  0x000000000367838c: test   %edx,%edx
+  0x000000000367838e: je     0x000000000367839e  ;*ifeq
+                                                ; - lecture17.CompilationTest::foo@1 (line 18)
+
+  0x0000000003678390: xor    %eax,%eax
+  0x0000000003678392: add    $0x20,%rsp
+  0x0000000003678396: pop    %rbp
+  0x0000000003678397: test   %eax,-0x1fb839d(%rip)        # 0x00000000016c0000
+                                                ;   {poll_return}
+  0x000000000367839d: retq   
+  0x000000000367839e: mov    %r8d,%ebp
+  0x00000000036783a1: mov    %edx,(%rsp)
+  0x00000000036783a4: mov    $0xffffff65,%edx
+  0x00000000036783a9: xchg   %ax,%ax
+  0x00000000036783ab: callq  0x00000000035a57a0  ; OopMap{off=48}
+                                                ;*ifeq
+                                                ; - lecture17.CompilationTest::foo@1 (line 18)
+                                                ;   {runtime_call}
+  0x00000000036783b0: int3                      ;*ifeq
+                                                ; - lecture17.CompilationTest::foo@1 (line 18)
+
+  0x00000000036783b1: hlt    
+  0x00000000036783b2: hlt    
+  0x00000000036783b3: hlt    
+  0x00000000036783b4: hlt    
+  0x00000000036783b5: hlt    
+  0x00000000036783b6: hlt    
+  0x00000000036783b7: hlt    
+  0x00000000036783b8: hlt    
+  0x00000000036783b9: hlt    
+  0x00000000036783ba: hlt    
+  0x00000000036783bb: hlt    
+  0x00000000036783bc: hlt    
+  0x00000000036783bd: hlt    
+  0x00000000036783be: hlt    
+  0x00000000036783bf: hlt    
+[Exception Handler]
+[Stub Code]
+  0x00000000036783c0: jmpq   0x000000000365a160  ;   {no_reloc}
+[Deopt Handler Code]
+  0x00000000036783c5: callq  0x00000000036783ca
+  0x00000000036783ca: subq   $0x5,(%rsp)
+  0x00000000036783cf: jmpq   0x00000000035a7600  ;   {runtime_call}
+  0x00000000036783d4: hlt    
+  0x00000000036783d5: hlt    
+  0x00000000036783d6: hlt    
+  0x00000000036783d7: hlt    
+OopMapSet contains 1 OopMaps
+
+#0 
+OopMap{off=48}
