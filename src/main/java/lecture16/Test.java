@@ -3,6 +3,7 @@ package lecture16;
 /**
  * * @Author: cuixin
  * * @Date: 2019/10/16 19:57
+ *  -XX:+PrintCompilation
  */
 public class Test {
     public static void foo(Object obj){

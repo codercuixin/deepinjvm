@@ -1,0 +1,83 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture23/Main.class
+  Last modified 2019-10-29; size 453 bytes
+  MD5 checksum 172e5a15fb33a0171555fa7aab68bf5e
+  Compiled from "Main.java"
+public class lecture23.Main
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #9.#19         // java/lang/Object."<init>":()V
+   #2 = Methodref          #8.#20         // lecture23/Main.example:()V
+   #3 = Class              #21            // lecture23/Foo1
+   #4 = Methodref          #3.#19         // lecture23/Foo1."<init>":()V
+   #5 = Class              #22            // lecture23/Bar
+   #6 = Methodref          #5.#19         // lecture23/Bar."<init>":()V
+   #7 = Methodref          #5.#23         // lecture23/Bar.setFoo1:(Llecture23/Foo1;)V
+   #8 = Class              #24            // lecture23/Main
+   #9 = Class              #25            // java/lang/Object
+  #10 = Utf8               <init>
+  #11 = Utf8               ()V
+  #12 = Utf8               Code
+  #13 = Utf8               LineNumberTable
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Utf8               example
+  #17 = Utf8               SourceFile
+  #18 = Utf8               Main.java
+  #19 = NameAndType        #10:#11        // "<init>":()V
+  #20 = NameAndType        #16:#11        // example:()V
+  #21 = Utf8               lecture23/Foo1
+  #22 = Utf8               lecture23/Bar
+  #23 = NameAndType        #26:#27        // setFoo1:(Llecture23/Foo1;)V
+  #24 = Utf8               lecture23/Main
+  #25 = Utf8               java/lang/Object
+  #26 = Utf8               setFoo1
+  #27 = Utf8               (Llecture23/Foo1;)V
+{
+  public lecture23.Main();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=0, locals=1, args_size=1
+         0: invokestatic  #2                  // Method example:()V
+         3: return
+      LineNumberTable:
+        line 9: 0
+        line 10: 3
+
+  public static void example();
+    descriptor: ()V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=0
+         0: new           #3                  // class lecture23/Foo1
+         3: dup
+         4: invokespecial #4                  // Method lecture23/Foo1."<init>":()V
+         7: astore_0
+         8: new           #5                  // class lecture23/Bar
+        11: dup
+        12: invokespecial #6                  // Method lecture23/Bar."<init>":()V
+        15: astore_1
+        16: aload_1
+        17: aload_0
+        18: invokevirtual #7                  // Method lecture23/Bar.setFoo1:(Llecture23/Foo1;)V
+        21: return
+      LineNumberTable:
+        line 12: 0
+        line 13: 8
+        line 14: 16
+        line 15: 21
+}
+SourceFile: "Main.java"
