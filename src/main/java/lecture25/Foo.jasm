@@ -1,0 +1,77 @@
+Classfile /D:/IdeaProject/deepinjvm/src/main/java/lecture25/Foo.class
+  Last modified 2019-10-29; size 327 bytes
+  MD5 checksum f73f60455c8b83d0bd4ad7864b772de0
+  Compiled from "Foo.java"
+public class lecture25.Foo
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #3.#13         // java/lang/Object."<init>":()V
+   #2 = Class              #14            // lecture25/Foo
+   #3 = Class              #15            // java/lang/Object
+   #4 = Utf8               <init>
+   #5 = Utf8               ()V
+   #6 = Utf8               Code
+   #7 = Utf8               LineNumberTable
+   #8 = Utf8               foo
+   #9 = Utf8               (II[I)I
+  #10 = Utf8               StackMapTable
+  #11 = Utf8               SourceFile
+  #12 = Utf8               Foo.java
+  #13 = NameAndType        #4:#5          // "<init>":()V
+  #14 = Utf8               lecture25/Foo
+  #15 = Utf8               java/lang/Object
+{
+  public lecture25.Foo();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 7: 0
+
+  int foo(int, int, int[]);
+    descriptor: (II[I)I
+    flags:
+    Code:
+      stack=4, locals=6, args_size=4
+         0: iconst_0
+         1: istore        4
+         3: iconst_0
+         4: istore        5
+         6: iload         5
+         8: aload_3
+         9: arraylength
+        10: if_icmpge     32
+        13: iload         4
+        15: iload_1
+        16: iload_2
+        17: imul
+        18: aload_3
+        19: iload         5
+        21: iaload
+        22: iadd
+        23: iadd
+        24: istore        4
+        26: iinc          5, 1
+        29: goto          6
+        32: iload         4
+        34: ireturn
+      LineNumberTable:
+        line 9: 0
+        line 10: 3
+        line 11: 13
+        line 10: 26
+        line 13: 32
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 6
+          locals = [ int, int ]
+        frame_type = 250 /* chop */
+          offset_delta = 25
+}
+SourceFile: "Foo.java"
