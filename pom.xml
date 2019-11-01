@@ -46,6 +46,12 @@
             <artifactId>jmh-core</artifactId>
             <version>1.21</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.objectweb.asm/com.springsource.org.objectweb.asm.tree -->
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>7.0-beta</version>
+        </dependency>
 
     </dependencies>
 
